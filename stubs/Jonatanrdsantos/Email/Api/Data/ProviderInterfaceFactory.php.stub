@@ -1,0 +1,20 @@
+<?php
+namespace Jonatanrdsantos\Email\Api\Data;
+
+use Jonatanrdsantos\Email\Api\Data\ProviderInterface;
+use Jonatanrdsantos\Email\Model\DataInterface;
+use Magento\Framework\DataObject;
+
+class ProviderInterfaceFactory
+{
+    /**
+     * Create class instance with specified parameters
+     *
+     * @param array<mixed> $data
+     * @return ProviderInterface&DataObject
+     */
+    public function create(array $data = [])
+    {
+        return $this->_objectManager->create($this->_instanceName, $data);
+    }
+}

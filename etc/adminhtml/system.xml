@@ -1,0 +1,76 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="system" sortOrder="20" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+            <!-- <group id="smtp" translate="label" type="text" sortOrder="20" showInDefault="0"
+            showInWebsite="0" showInStore="0"/> -->
+            <group id="email" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                <label>Mail Sending Settings</label>
+                <field id="provider" type="select" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1"
+                       translate="label">
+                    <label>Provider</label>
+                    <comment/>
+                    <source_model>Jonatanrdsantos\Email\Model\Config\Source\Provider</source_model>
+                    <config_path>system/email/provider</config_path>
+                </field>
+                <field id="protocol" type="select" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1"
+                       translate="label">
+                    <label>Protocol</label>
+                    <comment/>
+                    <source_model>Jonatanrdsantos\Email\Model\Config\Source\Protocol</source_model>
+                    <config_path>system/email/protocol</config_path>
+                </field>
+                <field id="authentication" type="select" sortOrder="10" showInWebsite="1" showInStore="1"
+                       showInDefault="1" translate="label">
+                    <label>Authentication</label>
+                    <comment/>
+                    <source_model>Jonatanrdsantos\Email\Model\Config\Source\Authentication</source_model>
+                    <config_path>system/email/authentication</config_path>
+                </field>
+                <field id="host" translate="label comment" type="text" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Host</label>
+                    <config_path>system/email/host</config_path>
+                    <depends>
+                        <field id="provider"/>
+                    </depends>
+                </field>
+                <field id="port" translate="label comment" type="text" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Port (25)</label>
+                    <config_path>system/email/port</config_path>
+                    <depends>
+                        <field id="provider"/>
+                    </depends>
+                </field>
+                <field id="username" type="text" sortOrder="40" showInWebsite="1" showInStore="1" showInDefault="1"
+                       translate="label">
+                    <label>Username</label>
+                    <config_path>system/email/username</config_path>
+                </field>
+                <field id="password" type="obscure" sortOrder="50" showInWebsite="1" showInStore="1" showInDefault="1"
+                       translate="label">
+                    <label>Password</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <config_path>system/email/password</config_path>
+                </field>
+                <field id="set_return_path" translate="label" type="select" sortOrder="70" showInDefault="1"
+                       showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Set Return-Path</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesnocustom</source_model>
+                    <config_path>system/email/set_return_path</config_path>
+                </field>
+                <field id="return_path_email" translate="label" type="text" sortOrder="80" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Return-Path Email</label>
+                    <validate>validate-email</validate>
+                    <backend_model>Magento\Config\Model\Config\Backend\Email\Address</backend_model>
+                    <config_path>system/email/return_path_email</config_path>
+                    <depends>
+                        <field id="set_return_path">2</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,33 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Jonatanrdsantos\Email\Api\Data\ProviderInterface" type="Jonatanrdsantos\Email\Model\Provider" />
+
+    <type name="Jonatanrdsantos\Email\Model\Provider\Collection">
+        <arguments>
+            <argument name="defaultItems" xsi:type="array">
+                <item name="gmail" xsi:type="array">
+                    <item name="id" xsi:type="string">gmail</item>
+                    <item name="label" xsi:type="string">Gmail, GSuite</item>
+                    <item name="host" xsi:type="string">smtp.gmail.com</item>
+                    <item name="port" xsi:type="number">465</item>
+                    <item name="protocol" xsi:type="string">ssl</item>
+                </item>
+                <item name="mailgun" xsi:type="array">
+                    <item name="id" xsi:type="string">mailgun</item>
+                    <item name="label" xsi:type="string">Mailgun</item>
+                    <item name="host" xsi:type="string">smtp.gmail.com</item>
+                    <item name="port" xsi:type="number">465</item>
+                    <item name="protocol" xsi:type="string">ssl</item>
+                </item>
+                <item name="mandrill" xsi:type="array">
+                    <item name="id" xsi:type="string">mandrill</item>
+                    <item name="label" xsi:type="string">Mandrill</item>
+                    <item name="host" xsi:type="string">smtp.mandrillapp.com</item>
+                    <item name="port" xsi:type="number">587</item>
+                    <item name="protocol" xsi:type="string">tls</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>
