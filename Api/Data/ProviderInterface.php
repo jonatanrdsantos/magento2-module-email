@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Jonatanrdsantos\Email\Api\Data;
 
-interface ProviderInterface
+interface ProviderInterface extends DataTransferObjectInterface
 {
     /**
      * Get id

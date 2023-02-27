@@ -1,0 +1,18 @@
+<?php
+namespace Magento\Framework;
+
+use Jonatanrdsantos\Email\Api\Data\DataTransferObjectInterface;
+
+class Collection
+{
+
+    /**
+     * Retrieve item by id
+     *
+     * @param string|int $idValue
+     * @return DataTransferObjectInterface|null
+     */
+    public function getItemById($idValue)
+    {
+    }
+}

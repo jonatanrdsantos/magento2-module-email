@@ -12,10 +12,10 @@
 
 declare(strict_types=1);
 
-namespace Jonatanrdsantos\Email\Test\Unit\Model;
+namespace Jonatanrdsantos\Email\Test\Unit\Model\Config;
 
+use Jonatanrdsantos\Email\Model\Config\Provider;
 use PHPUnit\Framework\TestCase;
-use Jonatanrdsantos\Email\Model\Provider;
 
 class ProvideTest extends TestCase
 {

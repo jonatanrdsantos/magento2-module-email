@@ -11,18 +11,24 @@
  */
 declare(strict_types=1);
 
-namespace Jonatanrdsantos\Email\Model\Provider;
+namespace Jonatanrdsantos\Email\Model\Config\Provider;
 
 use Exception;
+use Jonatanrdsantos\Email\Api\Data\ProviderInterface;
 use Magento\Framework\Data\Collection\EntityFactoryInterface;
-use Jonatanrdsantos\Email\Api\Data\ProviderInterfaceFactory;
 
 class Collection extends \Magento\Framework\Data\Collection
 {
     /**
+     * Item object class name
+     *
+     * @var string
+     */
+    protected $_itemObjectClass = ProviderInterface::class;
+
+    /**
      * Initializes Collection
      *
-     * @param ProviderInterfaceFactory $factory       Factory for Provider Model
      * @param EntityFactoryInterface   $entityFactory Factory for Collection Items
      * @param array                    $defaultItems  Array of default provider items
      *
@@ -31,7 +37,6 @@ class Collection extends \Magento\Framework\Data\Collection
      * @throws Exception
      */
     public function __construct(
-        private readonly ProviderInterfaceFactory $factory,
         EntityFactoryInterface $entityFactory,
         array $defaultItems = []
     ) {
@@ -64,7 +69,10 @@ class Collection extends \Magento\Framework\Data\Collection
     {
         if (!empty($items)) {
             foreach ($items as $item) {
-                $this->addItem($this->factory->create(['data' => $item]));
+                $this->addItem($this->_entityFactory->create(
+                    $this->_itemObjectClass,
+                    ['data' => $item]
+                ));
             }
         }
     }

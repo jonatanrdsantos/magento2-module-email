@@ -11,10 +11,10 @@
  */
 declare(strict_types=1);
 
-namespace Jonatanrdsantos\Email\Model;
+namespace Jonatanrdsantos\Email\Model\Config;
 
-use Magento\Framework\DataObject;
 use Jonatanrdsantos\Email\Api\Data\ProviderInterface;
+use Magento\Framework\DataObject;
 
 class Provider extends DataObject implements ProviderInterface
 {

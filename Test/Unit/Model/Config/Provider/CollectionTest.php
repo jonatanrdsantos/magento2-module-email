@@ -12,15 +12,14 @@
 
 declare(strict_types=1);
 
-namespace Jonatanrdsantos\Email\Test\Unit\Model\Provider;
+namespace Jonatanrdsantos\Email\Test\Unit\Model\Config\Provider;
 
 use Exception;
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\MockObject\MockObject;
+use Jonatanrdsantos\Email\Model\Config\Provider;
+use Jonatanrdsantos\Email\Model\Config\Provider\Collection;
 use Magento\Framework\Data\Collection\EntityFactoryInterface;
-use Jonatanrdsantos\Email\Api\Data\ProviderInterfaceFactory;
-use Jonatanrdsantos\Email\Model\Provider\Collection;
-use Jonatanrdsantos\Email\Model\Provider;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class CollectionTest extends TestCase
 {
@@ -57,11 +56,6 @@ class CollectionTest extends TestCase
     private $entityFactoryMock;
 
     /**
-     * @var ProviderInterfaceFactory&MockObject
-     */
-    private $providerFactoryMock;
-
-    /**
      * @var Collection
      */
     private Collection $collection;
@@ -79,9 +73,6 @@ class CollectionTest extends TestCase
      */
     protected function setUp(): void
     {
-        $this->providerFactoryMock = $this->createMock(
-            ProviderInterfaceFactory::class
-        );
         $this->entityFactoryMock = $this->getMockForAbstractClass(
             EntityFactoryInterface::class
         );
@@ -90,7 +81,7 @@ class CollectionTest extends TestCase
             $this->providers[] = new Provider($provider);
         }
 
-        $this->providerFactoryMock->expects($this->any())
+        $this->entityFactoryMock->expects($this->exactly(3))
             ->method('create')
             ->willReturnOnConsecutiveCalls(
                 $this->providers[0],
@@ -99,7 +90,6 @@ class CollectionTest extends TestCase
             );
 
         $this->collection = new Collection(
-            $this->providerFactoryMock,
             $this->entityFactoryMock,
             self::DEFAULT
         );
@@ -115,6 +105,25 @@ class CollectionTest extends TestCase
         $this->assertEquals(
             self::OPTION_ARRAY,
             $this->collection->toOptionArray()
+        );
+    }
+
+    /**
+     * Test getItemById
+     *
+     * @return void
+     */
+    public function testGetItemById(): void
+    {
+        if ($this->collection->getItemById(self::OPTION_ARRAY[0]['value']) != null) {
+            $this->assertEquals(
+                self::DEFAULT[self::OPTION_ARRAY[0]['value']],
+                $this->collection->getItemById(self::OPTION_ARRAY[0]['value'])->toArray()
+            );
+        }
+        $this->assertInstanceOf(
+            Provider::class,
+            $this->collection->getItemById(self::OPTION_ARRAY[0]['value'])
         );
     }
 }

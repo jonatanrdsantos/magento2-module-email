@@ -23,7 +23,7 @@ class AuthenticationTest extends TestCase
      * The expected result of toOptionArray
      */
     private const OPTION_ARRAY = [
-        ['value' => 'smtp', 'label' => 'SMTP'],
+        ['value' => '', 'label' => 'NONE'],
         ['value' => 'plain', 'label' => 'Plain'],
         ['value' => 'login', 'label' => 'Login']
     ];
