@@ -2,10 +2,16 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
         <section id="system" sortOrder="20" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
-            <!-- <group id="smtp" translate="label" type="text" sortOrder="20" showInDefault="0"
-            showInWebsite="0" showInStore="0"/> -->
+            <group id="smtp" translate="label" type="text" sortOrder="20" showInDefault="0"
+            showInWebsite="0" showInStore="0"/>
             <group id="email" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
                 <label>Mail Sending Settings</label>
+                <field id="developer_mode" translate="label" type="select" sortOrder="5" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Developer</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>system/email/developer_mode</config_path>
+                </field>
                 <field id="provider" type="select" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1"
                        translate="label">
                     <label>Provider</label>
@@ -19,6 +25,9 @@
                     <comment/>
                     <source_model>Jonatanrdsantos\Email\Model\Config\Source\Protocol</source_model>
                     <config_path>system/email/protocol</config_path>
+                    <depends>
+                        <field id="provider"/>
+                    </depends>
                 </field>
                 <field id="authentication" type="select" sortOrder="10" showInWebsite="1" showInStore="1"
                        showInDefault="1" translate="label">

@@ -39,6 +39,8 @@ parameters:
             - %rootDir%/../../../dev/tests/static/framework/Magento/PhpStan/autoload.php
     stubFiles:
         - stubs/Magento/Framework/DataObject.php.stub
+        - stubs/Magento/Framework/Data/Collection.php.stub
+        - stubs/Jonatanrdsantos/Email/Api/Data/DataTransferObjectInterface.php.stub
         - stubs/Jonatanrdsantos/Email/Api/Data/ProviderInterface.php.stub
         - stubs/Jonatanrdsantos/Email/Api/Data/ProviderInterfaceFactory.php.stub
     ignoreErrors:

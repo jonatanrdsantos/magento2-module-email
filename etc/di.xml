@@ -1,8 +1,15 @@
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Jonatanrdsantos\Email\Api\Data\ProviderInterface" type="Jonatanrdsantos\Email\Model\Provider" />
-
-    <type name="Jonatanrdsantos\Email\Model\Provider\Collection">
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Jonatanrdsantos\Email\Api\Data\ProviderInterface" type="Jonatanrdsantos\Email\Model\Config\Provider" />
+    <preference for="Magento\Framework\Mail\TransportInterface" type="Jonatanrdsantos\Email\Model\Mail\Transport" />
+    <preference for="Jonatanrdsantos\Email\Api\Data\ConfigInterface" type="Jonatanrdsantos\Email\Model\Config" />
+    <preference for="Jonatanrdsantos\Email\Api\Data\ConnectionConfigInterface" type="Jonatanrdsantos\Email\Model\Mail\Transport\Smtp\Options\ConnectionConfig" />
+    <preference for="Jonatanrdsantos\Email\Api\Data\SmtpOptionsInterface" type="Jonatanrdsantos\Email\Model\Mail\Transport\Smtp\Options" />
+    <type name="Jonatanrdsantos\Email\Model\Mail\Transport">
+        <arguments>
+            <argument name="transport" xsi:type="object">Jonatanrdsantos\Email\Model\Mail\Transport\Smtp</argument>
+        </arguments>
+    </type>
+    <type name="Jonatanrdsantos\Email\Model\Config\Provider\Collection">
         <arguments>
             <argument name="defaultItems" xsi:type="array">
                 <item name="gmail" xsi:type="array">
@@ -29,5 +36,4 @@
             </argument>
         </arguments>
     </type>
-
 </config>

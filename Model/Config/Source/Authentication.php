@@ -18,9 +18,9 @@ use Magento\Framework\Data\OptionSourceInterface;
 class Authentication implements OptionSourceInterface
 {
     /**
-     * SMTP option value
+     * NONE option value
      */
-    private const SMTP = 'smtp';
+    private const NONE = '';
 
     /**
      * Plain option value
@@ -36,7 +36,7 @@ class Authentication implements OptionSourceInterface
      * Return array of options as value-label pairs
      *
      * @return array{
-     *          array{value: 'smtp', label: \Magento\Framework\Phrase},
+     *          array{value: '', label: \Magento\Framework\Phrase},
      *          array{value: 'plain', label: \Magento\Framework\Phrase},
      *          array{value: 'login', label: \Magento\Framework\Phrase}
      *      }
@@ -44,7 +44,7 @@ class Authentication implements OptionSourceInterface
     public function toOptionArray(): array
     {
         return [
-            ['value' => self::SMTP, 'label' => __('SMTP')],
+            ['value' => self::NONE, 'label' => __('NONE')],
             ['value' => self::PLAIN, 'label' => __('Plain')],
             ['value' => self::LOGIN, 'label' => __('Login')]
         ];

@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Jonatanrdsantos\Email\Model\Config\Source;
 
 use Magento\Framework\Data\OptionSourceInterface;
-use Jonatanrdsantos\Email\Model\Provider\CollectionFactory;
+use Jonatanrdsantos\Email\Model\Config\Provider\Collection;
 
 class Provider implements OptionSourceInterface
 {
@@ -26,10 +26,10 @@ class Provider implements OptionSourceInterface
     /**
      * Initializes Provider
      *
-     * @param CollectionFactory $collectionFactory Provider Collection Factory
+     * @param Collection $collection Provider Collection
      */
     public function __construct(
-        private readonly CollectionFactory $collectionFactory
+        private readonly Collection $collection
     ) {
     }
 
@@ -40,10 +40,9 @@ class Provider implements OptionSourceInterface
      */
     public function toOptionArray(): array
     {
-        $collection = $this->collectionFactory->create();
         return array_merge(
             [['value' => self::CUSTOM, 'label' => __('Custom')]],
-            $collection->toOptionArray()
+            $this->collection->toOptionArray()
         );
     }
 }

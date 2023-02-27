@@ -14,12 +14,11 @@ declare(strict_types=1);
 namespace Jonatanrdsantos\Email\Test\Unit\Model\Config\Source;
 
 use Exception;
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\Data\OptionSourceInterface;
+use Jonatanrdsantos\Email\Model\Config\Provider\Collection;
 use Jonatanrdsantos\Email\Model\Config\Source\Provider;
-use Jonatanrdsantos\Email\Model\Provider\Collection;
-use Jonatanrdsantos\Email\Model\Provider\CollectionFactory;
+use Magento\Framework\Data\OptionSourceInterface;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class ProviderTest extends TestCase
 {
@@ -44,11 +43,6 @@ class ProviderTest extends TestCase
     private Provider $provider;
 
     /**
-     * @var MockObject&CollectionFactory
-     */
-    private $collectionFactoryMock;
-
-    /**
      * @var MockObject&Collection
      */
     private $collectionMock;
@@ -61,11 +55,8 @@ class ProviderTest extends TestCase
      */
     protected function setUp(): void
     {
-        $this->collectionFactoryMock = $this->createMock(
-            CollectionFactory::class
-        );
         $this->collectionMock = $this->createMock(Collection::class);
-        $this->provider = new Provider($this->collectionFactoryMock);
+        $this->provider = new Provider($this->collectionMock);
     }
 
     /**
@@ -75,8 +66,6 @@ class ProviderTest extends TestCase
      */
     public function testToOptionArray(): void
     {
-        $this->collectionFactoryMock->expects($this->once())
-            ->method('create')->willReturn($this->collectionMock);
         $this->collectionMock->expects($this->once())
             ->method('toOptionArray')
             ->willReturn(self::COLLECTION_OPTION_ARRAY);
