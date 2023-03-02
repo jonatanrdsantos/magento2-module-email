@@ -76,6 +76,7 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           tools: composer:${{ matrix.composer }}
+          coverage: xdebug
 
       - name: Create Magento 2 project
         run: |
@@ -138,4 +139,7 @@ jobs:
         run: vendor/bin/phpmd app/code/ text dev/tests/static/testsuite/Magento/Test/Php/_files/phpmd/ruleset.xml
 
       - name: Run tests
-        run: vendor/bin/phpunit -c dev/tests/unit/phpunit.xml.dist app/code/Jonatanrdsantos/Email/
+        run: XDEBUG_MODE=coverage vendor/bin/phpunit -c dev/tests/unit/phpunit.xml.dist app/code/Jonatanrdsantos/Email/ --coverage-clover ./coverage.xml
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
