@@ -3,6 +3,7 @@
 [![Latest Unstable Version](http://poser.pugx.org/jonatanrdsantos/magento2-module-email/v/unstable)](https://packagist.org/packages/jonatanrdsantos/magento2-module-email)
 [![License](http://poser.pugx.org/jonatanrdsantos/magento2-module-email/license)](https://packagist.org/packages/jonatanrdsantos/magento2-module-email)
 [![PHP Version Require](http://poser.pugx.org/jonatanrdsantos/magento2-module-email/require/php)](https://packagist.org/packages/jonatanrdsantos/magento2-module-email)
+[![codecov](https://codecov.io/github/jonatanrdsantos/magento2-module-email/branch/main/graph/badge.svg?token=LR083LNHU5)](https://codecov.io/github/jonatanrdsantos/magento2-module-email)
 
     jonatanrdsantos/magento2-module-email
 
