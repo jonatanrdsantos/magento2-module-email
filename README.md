@@ -2,8 +2,12 @@
 [![Latest Stable Version](http://poser.pugx.org/jonatanrdsantos/magento2-module-email/v)](https://packagist.org/packages/jonatanrdsantos/magento2-module-email)
 [![Latest Unstable Version](http://poser.pugx.org/jonatanrdsantos/magento2-module-email/v/unstable)](https://packagist.org/packages/jonatanrdsantos/magento2-module-email)
 [![License](http://poser.pugx.org/jonatanrdsantos/magento2-module-email/license)](https://packagist.org/packages/jonatanrdsantos/magento2-module-email)
-[![PHP Version Require](http://poser.pugx.org/jonatanrdsantos/magento2-module-email/require/php)](https://packagist.org/packages/jonatanrdsantos/magento2-module-email)
 [![codecov](https://codecov.io/github/jonatanrdsantos/magento2-module-email/branch/main/graph/badge.svg?token=LR083LNHU5)](https://codecov.io/github/jonatanrdsantos/magento2-module-email)
+![Maintenance](https://img.shields.io/maintenance/yes/2023)
+![Packagist PHP Version](https://img.shields.io/packagist/dependency-v/jonatanrdsantos/magento2-module-email/php)
+![Packagist PHP Version](https://img.shields.io/badge/magento-%202.5-brightgreen.svg?logo=magento&longCache=true)
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/jonatanrdsantos/magento2-module-email/code_quality.yml)
+
 
     jonatanrdsantos/magento2-module-email
 
