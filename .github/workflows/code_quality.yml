@@ -3,6 +3,8 @@ name: "Code quality"
 on:
   pull_request:
     branches: [main]
+  push:
+    branches: [main]
 
 env:
   MAGENTO_CODING_STANDARD: "v25"
@@ -139,7 +141,7 @@ jobs:
         run: vendor/bin/phpmd app/code/ text dev/tests/static/testsuite/Magento/Test/Php/_files/phpmd/ruleset.xml
 
       - name: Run tests
-        run: XDEBUG_MODE=coverage vendor/bin/phpunit -c dev/tests/unit/phpunit.xml.dist app/code/Jonatanrdsantos/Email/ --coverage-clover ./coverage.xml
+        run: XDEBUG_MODE=coverage vendor/bin/phpunit -c app/code/Jonatanrdsantos/Email/phpunit.xml app/code/Jonatanrdsantos/Email/ --coverage-clover ./coverage.xml
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
